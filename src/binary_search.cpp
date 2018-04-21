@@ -1,34 +1,32 @@
 // binary search algorithm
 // array must already be sorted
-// returns the index val was found at
+// returns the index where val was found
 
 #include<iostream>
-using namespace std;
 
-long binary_search(long ary[], long, long, long);
+long binary_search(long ary[], long, long);
 
 int main() {
-  long l = 0;
-  long r = 15;
-  long val = 7;
-  long array[16] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
-  cout << binary_search(array, l, r, val) << endl;
+  long size = 16;
+  long array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+  std::cout << binary_search(array, size, 0) << std::endl;
+  std::cout << binary_search(array, size, 1) << std::endl;
 }
 
-// l is the left index (0) and r is the right index
-// val is the value to search for
-// returns -1 if no value found
-long binary_search(long ary[], long l, long r, long val) {
-  long mid = l + (r - l) / 2;
+// returns the index where val was found or -1 if it wasn't found
+long binary_search(long ary[], long size, long val) {
+  long l = 0; // left index
+  long r = size - 1; // right index
 
-  while(ary[mid] != val){
-    if(ary[mid] < val) {
-      l = mid;
-      mid += (r - l) / 2;
-    } else if(ary[mid] > val) {
-      r = mid;
-      mid -= (r - l) / 2;
-    }
+  while(l <= r)
+  {
+    long mid = l + (r - l) / 2;
+    if(val < ary[mid])
+      r = mid - 1;
+    else if(val > ary[mid])
+      l = mid + 1;
+    else
+      return mid;
   }
-  return mid;
+  return -1;
 }

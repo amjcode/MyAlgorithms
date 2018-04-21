@@ -18,12 +18,11 @@ long binary_search(long ary[], long size, long val) {
   long l = 0; // left index
   long r = size - 1; // right index
 
-  while(l <= r)
-  {
+  while (l <= r) {
     long mid = l + (r - l) / 2;
-    if(val < ary[mid])
+    if (val < ary[mid])
       r = mid - 1;
-    else if(val > ary[mid])
+    else if (val > ary[mid])
       l = mid + 1;
     else
       return mid;

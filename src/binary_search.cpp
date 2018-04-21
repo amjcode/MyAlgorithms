@@ -7,4 +7,5 @@
 template<typename T>
 T binary_search(long l, long r, T val) {
   // this is binary search
+  // this will soon do something
 }
